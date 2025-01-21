@@ -1,0 +1,14 @@
+{
+  "name": "ecommerce-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/alvdelci/ecommerce-backend.git",
+  "author": "alvdelci <delcimarioalvesdev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
