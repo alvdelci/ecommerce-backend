@@ -9,6 +9,7 @@ const port = 3333;
 
 app.use(cors());
 app.use(express.json());
+express.urlencoded({ extended: true });
 app.use(route);
 
 app.listen(port, () => {
