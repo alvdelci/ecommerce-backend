@@ -1,9 +1,15 @@
+const CartSchema = require('../schemas/CartSchema');
+
 const get = (req, res) => {
-    return res.status(200).json({ message: 'Get cart' });
+    const { id } = req.params;
+    const cart = CartSchema.find({ _id: id });
+    return res.status(200).json({ data: cart });
 }
 
 const save = (req, res) => {
-    return res.status(200).json({ message: 'Save cart' });
+    const cart = req.body;
+    const state = CartSchema.create(cart);
+    return res.status(200).json(state);
 }
 
 module.exports = {

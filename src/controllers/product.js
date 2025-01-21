@@ -1,17 +1,17 @@
-const hello = (req, res) => {
-    return res.status(200).json({ message: 'Helo World!' });
+const ProductSchema = require('../schemas/ProductSchema');
+
+const list = async (req, res) => {
+    const products = await ProductSchema.find({});
+    return res.status(200).json({ data: products });
 }
 
-const list = (req, res) => {
-    return res.status(200).json({ message: 'List of products' });
-}
-
-const detail = (req, res) => {
-    return res.status(200).json({ message: 'Detail of product' });
+const detail = async (req, res) => {
+    const { id } = req.params;
+    const product = await ProductSchema.findById(id);
+    return res.status(200).json({ data: product.toJSON() });
 }
 
 module.exports = {
-    hello,
     list,
     detail
 }
