@@ -3,7 +3,7 @@ const ProductSchema = require('../schemas/ProductSchema');
 const save = async (data) => {
     try {
         const product = await ProductSchema.create(data);
-        return { code: 200, message: "success", data: product };
+        return { code: 201, message: "success", data: product };
     } catch (error) {
         return { code: 400, message: "Failed to register product", error: error.message };
     }
