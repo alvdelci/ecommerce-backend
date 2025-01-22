@@ -6,7 +6,8 @@
   "author": "alvdelci <delcimarioalvesdev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "jest"
   },
   "dependencies": {
     "cors": "^2.8.5",
