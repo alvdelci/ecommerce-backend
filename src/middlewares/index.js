@@ -32,18 +32,8 @@ const verifyEmailAlreadyExists = async (req, res, next) => {
 
 }
 
-const verifyParamId = (req, res, next) => {
-    const { id } = req.params;
-
-    if (!id) {
-        return res.status(400).json({ message: `Missing required fields` });
-    }
-    next();
-}
-
 module.exports = {
     verifyProductRequiredFields,
     verifyCustomerRequiredFields,
-    verifyEmailAlreadyExists,
-    verifyParamId
+    verifyEmailAlreadyExists
 }
