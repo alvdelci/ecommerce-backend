@@ -12,6 +12,7 @@ route.post('/product', middleware.verifyProductRequiredFields, productController
 
 route.get('/cart/:id', cartController.get);
 route.post('/cart', cartController.save);
+route.delete('/cart/:id', cartController.remove);
 
 route.post('/customer', [middleware.verifyCustomerRequiredFields, middleware.verifyEmailAlreadyExists], customerController.save);
 route.get('/customer/:id', customerController.get);
