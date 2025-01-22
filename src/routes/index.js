@@ -10,7 +10,7 @@ route.get('/product', productController.list);
 route.get('/product/:id', productController.detail);
 route.post('/product', middleware.verifyProductRequiredFields, productController.save);
 
-route.get('/cart', cartController.get);
+route.get('/cart/:id', cartController.get);
 route.post('/cart', cartController.save);
 
 route.post('/customer', [middleware.verifyCustomerRequiredFields, middleware.verifyEmailAlreadyExists], customerController.save);
