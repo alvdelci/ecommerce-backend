@@ -12,6 +12,9 @@ const save = async (data) => {
 const list = async () => {
     try {
         const products = await ProductSchema.find({});
+        if (products.length === 0) {
+            return { code: 404, message: "Products not found" };
+        }
         return { code: 200, message: "success", data: products };
     } catch (error) {
         return { code: 400, message: "Failed to get products", error: error.message };
