@@ -1,15 +1,19 @@
 const Router = require('express').Router;
 const route = Router();
 
-const { get, register } = require('../controllers/cart');
-const { list, detail, save } = require('../controllers/product');
-const { verifyRequiredFields } = require('../middlewares');
+const cartController = require('../controllers/cart');
+const productController = require('../controllers/product');
+const customerController = require('../controllers/customer');
+const middleware = require('../middlewares');
 
-route.get('/product', list);
-route.get('/product/:id', detail);
-route.post('/product', verifyRequiredFields, save);
+route.get('/product', productController.list);
+route.get('/product/:id', productController.detail);
+route.post('/product', middleware.verifyProductRequiredFields, productController.save);
 
-route.get('/cart', get);
-route.post('/cart', register);
+route.get('/cart', cartController.get);
+route.post('/cart', cartController.save);
+
+route.post('/customer', [middleware.verifyCustomerRequiredFields, middleware.verifyEmailAlreadyExists], customerController.save);
+route.get('/customer/:id', customerController.get);
 
 module.exports = route;
