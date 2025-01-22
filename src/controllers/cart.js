@@ -21,7 +21,25 @@ const save = async (req, res) => {
     }
 }
 
+const remove = async (req, res) => {
+    console.log("func");
+
+    try {
+        const cart = await CartSchema.findById(req.params.id);
+        console.log(cart);
+
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
+        await CartSchema.deleteOne({ _id: req.params.id });
+        return res.status(200).json({ message: "Cart deleted", data: cart });
+    } catch (error) {
+        return res.status(400).json({ message: "Failed to delete cart", error: error.message });
+    }
+}
+
 module.exports = {
     get,
-    save
+    save,
+    remove
 }
