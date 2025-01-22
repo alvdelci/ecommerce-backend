@@ -45,6 +45,13 @@ describe("POST /api/product", () => {
 
 describe("GET /api/product", () => {
     it("should list products and return 200", async () => {
+        //create a product to list
+        await request(app).post("/api/product").send({
+            name: "Product 1",
+            price: 95.90,
+            image: "image url",
+            stock: 22,
+        });
         const res = await request(app).get("/api/product");
         expect(res.statusCode).toBe(200);
         expect(res.body.message).toBe("success");
