@@ -6,7 +6,7 @@ const get = (req, res) => {
     return res.status(200).json({ data: cart });
 }
 
-const save = (req, res) => {
+const register = (req, res) => {
     const cart = req.body;
     const state = CartSchema.create(cart);
     return res.status(200).json(state);
@@ -14,5 +14,5 @@ const save = (req, res) => {
 
 module.exports = {
     get,
-    save
+    register
 }
