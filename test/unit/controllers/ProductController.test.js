@@ -56,6 +56,12 @@ describe("GET /api/product", () => {
         expect(res.statusCode).toBe(200);
         expect(res.body.message).toBe("success");
     });
+
+    test("should return a empty list and products not found", async () => {
+        const res = await request(app).get("/api/product");
+        expect(res.statusCode).toBe(404);
+        expect(res.body.message).toBe("Products not found");
+    });
 });
 
 describe("GET /api/product/:id", () => {
