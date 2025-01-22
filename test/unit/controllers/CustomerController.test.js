@@ -21,7 +21,7 @@ afterEach(async () => {
 });
 
 describe("POST /api/customer", () => {
-    it("should create a customer and return 201", async () => {
+    test("should create a customer and return 201", async () => {
         const res = await request(app).post("/api/customer").send({
             name: "Customer 1",
             email: "customer1@mail.com",
@@ -31,7 +31,7 @@ describe("POST /api/customer", () => {
         expect(res.body.message).toBe("success");
     });
 
-    it("should failed to register customer and return 400", async () => {
+    test("should failed to register customer and return 400", async () => {
         const res = await request(app).post("/api/customer").send({
             name: "Customer 1", //name is required
             email: "", //email is required
@@ -43,7 +43,7 @@ describe("POST /api/customer", () => {
 });
 
 describe("GET /api/customer/:id", () => {
-    it("should return the customer and code 200", async () => {
+    test("should return the customer and code 200", async () => {
         //create a customer to get the id
         const customer = await request(app).post("/api/customer").send({
             name: "Customer 1",
@@ -55,7 +55,7 @@ describe("GET /api/customer/:id", () => {
         expect(res.body.message).toBe("success");
     });
 
-    it("should return customer not found and code 404", async () => {
+    test("should return customer not found and code 404", async () => {
         const res = await request(app).get(`/api/customer/67914f4b02373ec8a01f3681`);
         expect(res.statusCode).toBe(404);
         expect(res.body.message).toBe("Customer not found");

@@ -20,7 +20,7 @@ afterEach(async () => {
 });
 
 describe("POST /api/product", () => {
-    it("should create a product and return 201", async () => {
+    test("should create a product and return 201", async () => {
         const res = await request(app).post("/api/product").send({
             name: "Product 1",
             price: 95.90,
@@ -31,7 +31,7 @@ describe("POST /api/product", () => {
         expect(res.body.message).toBe("success");
     });
 
-    it("should failed to register product and return 400", async () => {
+    test("should failed to register product and return 400", async () => {
         const res = await request(app).post("/api/product").send({
             name: "Product 1",
             price: 95.90,
@@ -44,7 +44,7 @@ describe("POST /api/product", () => {
 });
 
 describe("GET /api/product", () => {
-    it("should list products and return 200", async () => {
+    test("should list products and return 200", async () => {
         //create a product to list
         await request(app).post("/api/product").send({
             name: "Product 1",
@@ -59,7 +59,7 @@ describe("GET /api/product", () => {
 });
 
 describe("GET /api/product/:id", () => {
-    it("should return the product and code 200", async () => {
+    test("should return the product and code 200", async () => {
         // Create a product to get the id
         const product = await request(app).post("/api/product").send({
             name: "Product 1",
@@ -72,7 +72,7 @@ describe("GET /api/product/:id", () => {
         expect(res.body.message).toBe("success");
     });
 
-    it("should return product not found and code 404", async () => {
+    test("should return product not found and code 404", async () => {
         const res = await request(app).get(`/api/product/612b8e5f9f5e4d0c6a4e7b7d`);
         expect(res.statusCode).toBe(404);
         expect(res.body.message).toBe("Product not found");
