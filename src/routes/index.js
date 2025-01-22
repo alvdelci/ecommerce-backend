@@ -1,13 +1,14 @@
 const Router = require('express').Router;
 const route = Router();
 
-const { get, save } = require('../controllers/cart');
-const { list, detail } = require('../controllers/product');
+const { get, register } = require('../controllers/cart');
+const { list, detail, save } = require('../controllers/product');
 
 route.get('/product', list);
 route.get('/product/:id', detail);
-route.get('/cart', get);
-route.post('/cart', save);
+route.post('/product', save);
 
+route.get('/cart', get);
+route.post('/cart', register);
 
 module.exports = route;
