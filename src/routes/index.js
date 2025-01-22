@@ -1,9 +1,9 @@
 const Router = require('express').Router;
 const route = Router();
 
-const cartController = require('../controllers/cart');
-const productController = require('../controllers/product');
-const customerController = require('../controllers/customer');
+const cartController = require('../controllers/CartController');
+const productController = require('../controllers/ProductController');
+const customerController = require('../controllers/CustomerController');
 const middleware = require('../middlewares');
 
 route.get('/product', productController.list);
