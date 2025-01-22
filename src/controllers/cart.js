@@ -22,12 +22,8 @@ const save = async (req, res) => {
 }
 
 const remove = async (req, res) => {
-    console.log("func");
-
     try {
         const cart = await CartSchema.findById(req.params.id);
-        console.log(cart);
-
         if (!cart) {
             return res.status(404).json({ message: "Cart not found" });
         }
