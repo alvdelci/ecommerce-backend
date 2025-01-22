@@ -7,6 +7,11 @@ require("dotenv").config();
 /**Open mongodb connection */
 beforeEach(async () => {
     await mongoose.connect(process.env.MONGO_URL_TEST);
+
+    const collections = await mongoose.connection.db.collections();
+    for (const collection of collections) {
+        await collection.deleteMany({});
+    }
 });
 
 /**Close mongodb connection */
