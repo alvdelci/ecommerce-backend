@@ -19,6 +19,10 @@ const ProductSchema = new mongoose.Schema({
     stock: {
         type: Number,
         required: true,
+    },
+    timestamps: {
+        type: Date,
+        default: Date.now
     }
 });
 
