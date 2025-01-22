@@ -1,9 +1,8 @@
 const ProductSchema = require('../schemas/ProductSchema');
 
 const save = async (req, res) => {
-    const product = req.body;
     try {
-        const state = await ProductSchema.create(product);
+        const state = await ProductSchema.create(req.body);
         return res.status(200).json({ message: "success", data: state });
     } catch (error) {
         return res.status(400).json({ message: "Failed to register product", error: error.message });
@@ -20,9 +19,11 @@ const list = async (req, res) => {
 }
 
 const detail = async (req, res) => {
-    const { id } = req.params;
     try {
-        const product = await ProductSchema.findById(id);
+        const product = await ProductSchema.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
         return res.status(200).json({ message: "success", data: product });
     } catch (error) {
         return res.status(400).json({ message: "Failed to get product", error: error.message });
