@@ -1,9 +1,9 @@
 const ProductSchema = require('../schemas/ProductSchema');
 
-const save = async (product) => {
+const save = async (data) => {
     try {
-        const state = await ProductSchema.create(product);
-        return { code: 200, message: "success", data: state };
+        const product = await ProductSchema.create(data);
+        return { code: 200, message: "success", data: product };
     } catch (error) {
         return { code: 400, message: "Failed to register product", error: error.message };
     }
