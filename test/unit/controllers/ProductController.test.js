@@ -48,6 +48,7 @@ describe("GET /api/product", () => {
 
 describe("GET /api/product/:id", () => {
     it("should return the product and code 200", async () => {
+        // Create a product to get the id
         const product = await request(app).post("/api/product").send({
             name: "Product 1",
             price: 95.90,
@@ -59,7 +60,7 @@ describe("GET /api/product/:id", () => {
         expect(res.body.message).toBe("success");
     });
 
-    it("should return 404 to product not found", async () => {
+    it("should return product not found and code 404", async () => {
         const res = await request(app).get(`/api/product/612b8e5f9f5e4d0c6a4e7b7d`);
         expect(res.statusCode).toBe(404);
         expect(res.body.message).toBe("Product not found");
