@@ -8,6 +8,7 @@ require("dotenv").config();
 beforeEach(async () => {
     await mongoose.connect(process.env.MONGO_URL_TEST);
 
+    //remove all collection of the databse before each test
     const collections = await mongoose.connection.db.collections();
     for (const collection of collections) {
         await collection.deleteMany({});
