@@ -1,20 +1,10 @@
-const Router = require('express').Router;
-const route = Router();
+const router = require('express').Router();
+const productRoutes = require('./ProductRoutes');
+const customerRoutes = require('./CustomerRoutes');
+const cartRoutes = require('./CartRoutes');
 
-const cartController = require('../controllers/CartController');
-const productController = require('../controllers/ProductController');
-const customerController = require('../controllers/CustomerController');
-const middleware = require('../middlewares');
+router.use('/product', productRoutes);
+router.use('/customer', customerRoutes);
+router.use('/cart', cartRoutes);
 
-route.get('/product', productController.list);
-route.get('/product/:id', productController.detail);
-route.post('/product', middleware.verifyProductRequiredFields, productController.save);
-
-route.get('/cart/:id', cartController.get);
-route.post('/cart', cartController.save);
-route.delete('/cart/:id', cartController.remove);
-
-route.post('/customer', [middleware.verifyCustomerRequiredFields, middleware.verifyEmailAlreadyExists], customerController.save);
-route.get('/customer/:id', customerController.get);
-
-module.exports = route;
+module.exports = router;
