@@ -6,15 +6,15 @@ const swaggerUi = require('swagger-ui-express');
  */
 const swaggerDefinition = {
     info: {
-        title: "API REST de exemplo de uso do Swagger em Node.js",
-        description: "Mostra como configurar uma aplicação Node.js com expressjs, swagger-ui-express para geração da Swagger UI e swagger-jsdoc para especificar os endpoints implementados com expressjs por meio de comentários JSDoc."
+        title: "E-commerce API",
+        description: "API documentation",
     },
     servers: ["http://localhost:3333"]
 }
 
 const swaggerOptions = {
     swaggerDefinition,
-    apis: ["./routes/*.js"]
+    apis: ["./src/routes/*.js"]
 };
 
 /**
