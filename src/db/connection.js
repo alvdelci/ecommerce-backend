@@ -6,7 +6,7 @@ module.exports = function main() {
         mongoose.connect(`${process.env.MONGO_URL}`);
         //test connection
         mongoose.connection.on('open', () => {
-            console.log("Connected to MongoDB\nConnection open");
+            console.log("Connected to MongoDB\nMongo connection is open");
         });
 
     } catch (error) {
