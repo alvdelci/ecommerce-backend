@@ -1,4 +1,3 @@
-const CartSchema = require('../schemas/CartSchema');
 const CartService = require('../services/CartService');
 
 const get = async (req, res) => {
