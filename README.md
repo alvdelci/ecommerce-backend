@@ -77,8 +77,9 @@ Instruções para a configuração e utilização do projeto
 - **POST /api/customer**: Adiciona um client
 - **GET /api/customer/:id**: Obtém os dados de um client específico
 
-### Testes
+## Testes
 
+1. Executar os testes unitários
     ```bash
     yarn test
     ```
