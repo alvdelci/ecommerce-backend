@@ -1,8 +1,8 @@
-const CartSchema = require('../schemas/CartSchema');
+const cache = require('../cache');
 
 const get = async (id) => {
     try {
-        const cart = await CartSchema.findById(id);
+        const cart = await cache.get(id);
         if (!cart) {
             return { code: 404, message: "Cart not found" };
         }
@@ -14,7 +14,7 @@ const get = async (id) => {
 
 const save = async (data) => {
     try {
-        const cart = await CartSchema.create(data);
+        const cart = await cache.set(data.customer_id, data);
         return { code: 201, message: "success", data: cart };
     } catch (error) {
         return { code: 400, message: "Failed to register cart", error: error.message };
@@ -23,11 +23,11 @@ const save = async (data) => {
 
 const remove = async (id) => {
     try {
-        const cart = await CartSchema.findById(id);
+        const cart = await cache.get(id);
         if (!cart) {
             return { code: 404, message: "Cart not found" };
         }
-        await CartSchema.deleteOne({ _id: id });
+        await cache.remove(id);
         return { code: 200, message: "Cart deleted", data: cart };
     } catch (error) {
         return { code: 400, message: "Failed to delete cart", error: error.message };

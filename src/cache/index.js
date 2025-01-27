@@ -21,15 +21,16 @@ client.on('end', () => {
 });
 
 const set = async (key, value) => {
-    await client.set(key, value);
+    await client.set(key, JSON.stringify(value));
 }
 
 const get = async (key) => {
     const value = await client.get(key);
-    console.log(value);
-
-    await client.disconnect();
-    return value;
+    return JSON.parse(value);
 }
 
-module.exports = { client, get, set };
+const remove = async (key) => {
+    await client.del(key);
+}
+
+module.exports = { client, get, set, remove };
