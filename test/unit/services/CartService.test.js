@@ -41,8 +41,12 @@ describe("Save cart", () => {
             customer_id: `${customer.data._id}`,
             products: [
                 {
-                    product_id: `${product.data._id}`,
-                    quantity: 4
+                    _id: product.data._id,
+                    name: "produto 1",
+                    image: "image url",
+                    price: 90.90,
+                    quantity: 1,
+                    stock: 10,
                 }
             ]
         });
@@ -71,8 +75,12 @@ describe("GET a cart", () => {
             customer_id: `${customer.data._id}`,
             products: [
                 {
-                    product_id: `${product.data._id}`,
-                    quantity: 4
+                    _id: product.data._id,
+                    name: "produto 1",
+                    image: "image url",
+                    price: 90.90,
+                    quantity: 1,
+                    stock: 10,
                 }
             ]
         });
