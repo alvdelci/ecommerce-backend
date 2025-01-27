@@ -1,4 +1,4 @@
-import redis from "redis";
+const redis = require('redis');
 
 const client = redis.createClient({
     socket: {
@@ -32,4 +32,4 @@ const get = async (key) => {
     return value;
 }
 
-export { client, get, set };
+module.exports = { client, get, set };
