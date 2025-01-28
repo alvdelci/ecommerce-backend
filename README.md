@@ -50,7 +50,7 @@ Instruções para a configuração e utilização do projeto
 - **src/server.js**: Arquivo que inicializa o servidor e outras ferramentas
 - **src/schemas**: Contém os modelos de dados.
 - **src/routes**: Contém as definições de rotas da API.
-- **src/controllers**: Contém os controladores que lidam com a lógica de negócios.
+- **src/controllers**: Contém os controladores que recebem a solicitação http, lidam com a lógica de negócios e enviam a resposta ao cliente.
 - **src/services**: Contém os serviços que executam ações no banco de dados e fazem a ponte entre o banco de dados e os controladores.
 - **src/middlewares**: Contém os middleware utilizados nas rotas.
 - **src/db**: Contém as configurações da conexão do banco de dados.
